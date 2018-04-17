@@ -13,9 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;  
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import hdgc.bean.UserInfo;
-import hdgc.service.UserInfoService;  
- 
+
 
  
 @RunWith(SpringJUnit4ClassRunner.class)     //表示继承了SpringJUnit4ClassRunner类  
@@ -24,22 +22,22 @@ import hdgc.service.UserInfoService;
 public class TestMyBatis {  
    
 // private ApplicationContext ac = null;  
-   @Resource  
-   private UserInfoService userService = null;  
- 
+   /*@Resource  */
+   /*private UserInfoService userService = null;  
+ */
 // @Before  
 // public void before() {  
 //     ac = new ClassPathXmlApplicationContext("applicationContext.xml");  
 //     userService = (IUserService) ac.getBean("userService");  
 // }  
  
-   @Test  
-   public void test1() {  
+   /*@Test  */
+   /*public void test1() {  
        List<UserInfo> user = userService.findByUserId(1L);  
        // System.out.println(user.getUserName());  
        // logger.info("值："+user.getUserName());  
        System.out.println(user.get(0).getBirthday());
-       /*logger.info(JSON.toJSONString(user.get(0)));  */
-   }  
+       logger.info(JSON.toJSONString(user.get(0)));  
+   } */ 
 }  
 

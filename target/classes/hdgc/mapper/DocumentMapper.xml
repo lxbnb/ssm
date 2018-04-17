@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hdgc.dao.DocumentMapper">
+  <resultMap id="BaseResultMap" type="hdgc.bean.Document">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="Document_Name" jdbcType="VARCHAR" property="documentName" />
+    <result column="Document_Content" jdbcType="VARCHAR" property="documentContent" />
+    <result column="Document_Evaluation" jdbcType="VARCHAR" property="documentEvaluation" />
+    <result column="userId" jdbcType="BIGINT" property="userid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Id, Document_Name, Document_Content, Document_Evaluation, userId
+  </sql>
+  <select id="selectByExample" parameterType="hdgc.bean.DocumentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from document
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from document
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from document
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="hdgc.bean.DocumentExample">
+    delete from document
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="hdgc.bean.Document">
+    insert into document (Id, Document_Name, Document_Content, 
+      Document_Evaluation, userId)
+    values (#{id,jdbcType=INTEGER}, #{documentName,jdbcType=VARCHAR}, #{documentContent,jdbcType=VARCHAR}, 
+      #{documentEvaluation,jdbcType=VARCHAR}, #{userid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="hdgc.bean.Document">
+    insert into document
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="documentName != null">
+        Document_Name,
+      </if>
+      <if test="documentContent != null">
+        Document_Content,
+      </if>
+      <if test="documentEvaluation != null">
+        Document_Evaluation,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="documentName != null">
+        #{documentName,jdbcType=VARCHAR},
+      </if>
+      <if test="documentContent != null">
+        #{documentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="documentEvaluation != null">
+        #{documentEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="hdgc.bean.DocumentExample" resultType="java.lang.Long">
+    select count(*) from document
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update document
+    <set>
+      <if test="record.id != null">
+        Id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.documentName != null">
+        Document_Name = #{record.documentName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.documentContent != null">
+        Document_Content = #{record.documentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.documentEvaluation != null">
+        Document_Evaluation = #{record.documentEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update document
+    set Id = #{record.id,jdbcType=INTEGER},
+      Document_Name = #{record.documentName,jdbcType=VARCHAR},
+      Document_Content = #{record.documentContent,jdbcType=VARCHAR},
+      Document_Evaluation = #{record.documentEvaluation,jdbcType=VARCHAR},
+      userId = #{record.userid,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="hdgc.bean.Document">
+    update document
+    <set>
+      <if test="documentName != null">
+        Document_Name = #{documentName,jdbcType=VARCHAR},
+      </if>
+      <if test="documentContent != null">
+        Document_Content = #{documentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="documentEvaluation != null">
+        Document_Evaluation = #{documentEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hdgc.bean.Document">
+    update document
+    set Document_Name = #{documentName,jdbcType=VARCHAR},
+      Document_Content = #{documentContent,jdbcType=VARCHAR},
+      Document_Evaluation = #{documentEvaluation,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=BIGINT}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

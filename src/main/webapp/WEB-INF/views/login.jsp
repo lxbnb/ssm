@@ -10,7 +10,7 @@
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<h1 class="box-title">木子李的java屋</h1>
+			<h1 class="box-title">IT项目管理</h1>
 		</div>
 
 		<div class="alert alert-success alert-dismissible"
