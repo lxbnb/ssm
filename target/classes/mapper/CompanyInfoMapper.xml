@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hdgc.dao.CompanyInfoMapper">
+  <resultMap id="BaseResultMap" type="hdgc.bean.CompanyInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="com_name" jdbcType="VARCHAR" property="comName" />
+    <result column="com_phone" jdbcType="VARCHAR" property="comPhone" />
+    <result column="com_haver" jdbcType="VARCHAR" property="comHaver" />
+    <result column="com_address" jdbcType="VARCHAR" property="comAddress" />
+    <result column="alluser_id" jdbcType="BIGINT" property="alluserId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, com_name, com_phone, com_haver, com_address, alluser_id
+  </sql>
+  <select id="selectByExample" parameterType="hdgc.bean.CompanyInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from companyinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from companyinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from companyinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="hdgc.bean.CompanyInfoExample">
+    delete from companyinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="hdgc.bean.CompanyInfo">
+    insert into companyinfo (id, com_name, com_phone, 
+      com_haver, com_address, alluser_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{comName,jdbcType=VARCHAR}, #{comPhone,jdbcType=VARCHAR}, 
+      #{comHaver,jdbcType=VARCHAR}, #{comAddress,jdbcType=VARCHAR}, #{alluserId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="hdgc.bean.CompanyInfo">
+    insert into companyinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="comName != null">
+        com_name,
+      </if>
+      <if test="comPhone != null">
+        com_phone,
+      </if>
+      <if test="comHaver != null">
+        com_haver,
+      </if>
+      <if test="comAddress != null">
+        com_address,
+      </if>
+      <if test="alluserId != null">
+        alluser_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="comName != null">
+        #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comPhone != null">
+        #{comPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="comHaver != null">
+        #{comHaver,jdbcType=VARCHAR},
+      </if>
+      <if test="comAddress != null">
+        #{comAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="alluserId != null">
+        #{alluserId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="hdgc.bean.CompanyInfoExample" resultType="java.lang.Long">
+    select count(*) from companyinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update companyinfo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.comName != null">
+        com_name = #{record.comName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comPhone != null">
+        com_phone = #{record.comPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comHaver != null">
+        com_haver = #{record.comHaver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comAddress != null">
+        com_address = #{record.comAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.alluserId != null">
+        alluser_id = #{record.alluserId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update companyinfo
+    set id = #{record.id,jdbcType=BIGINT},
+      com_name = #{record.comName,jdbcType=VARCHAR},
+      com_phone = #{record.comPhone,jdbcType=VARCHAR},
+      com_haver = #{record.comHaver,jdbcType=VARCHAR},
+      com_address = #{record.comAddress,jdbcType=VARCHAR},
+      alluser_id = #{record.alluserId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="hdgc.bean.CompanyInfo">
+    update companyinfo
+    <set>
+      <if test="comName != null">
+        com_name = #{comName,jdbcType=VARCHAR},
+      </if>
+      <if test="comPhone != null">
+        com_phone = #{comPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="comHaver != null">
+        com_haver = #{comHaver,jdbcType=VARCHAR},
+      </if>
+      <if test="comAddress != null">
+        com_address = #{comAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="alluserId != null">
+        alluser_id = #{alluserId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hdgc.bean.CompanyInfo">
+    update companyinfo
+    set com_name = #{comName,jdbcType=VARCHAR},
+      com_phone = #{comPhone,jdbcType=VARCHAR},
+      com_haver = #{comHaver,jdbcType=VARCHAR},
+      com_address = #{comAddress,jdbcType=VARCHAR},
+      alluser_id = #{alluserId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
