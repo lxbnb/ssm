@@ -2,3 +2,4 @@ eclipse.preferences.version=1
 encoding//src/main/java/hdgc/interceptor/PowerInterceptor.java=UTF-8
 encoding//src/main/java/hdgc/utils/CodeGenerationUtil.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/common/head.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/jsp/loginSubmit.jsp=UTF-8

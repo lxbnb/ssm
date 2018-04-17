@@ -59,7 +59,7 @@
 							<input type="checkbox"> 记住密码
 						</div>
 						<div class="form-group has-feedback">
-							<button type="submit" class="btn btn-primary btn-block btn-flat">登陆</button>
+							<button type="button" class="btn btn-primary btn-block btn-flat" id="signup">登陆</button>
 						</div>
 						<div class="form-group has-feedback" style="text-align: center;">
 							<hr>
@@ -121,6 +121,17 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="${APP_PATH }/myjs/login.js">
+		
+	</script>
+	<script>
+		$("#reg_btn").click(function(){
+			$("#reg_form").attr("action","itProject/regirestSubmit.action");
+			$("#reg_form").submit();
+		});
+		$("#signup").click(function(){
+			$("#reg_form").attr("action","itProject/loginSubmit.action");
+			$("#reg_form").submit();
+		});
 		
 	</script>
 </body>

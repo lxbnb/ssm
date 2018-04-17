@@ -5,7 +5,7 @@
 	pageContext.setAttribute("APP_PATH", request.getContextPath());
 %>
   <meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8">
-  <title>木子李的菜鸟进阶</title>
+  <title>IT项目管理</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
  
