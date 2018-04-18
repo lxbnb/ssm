@@ -3,8 +3,10 @@ package hdgc.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import hdgc.bean.User;
@@ -26,14 +28,17 @@ public class ITProjectController {
 		return "redirect:/login.action";
 	}
 	@RequestMapping("/loginSubmit")
-	public String loginSubmit(String username,String password) {
+	public String loginSubmit(String username,String password,HttpSession session,Model model) {
 		List<User> userList = userService.findByNameAndPassword(username, password);
 		System.out.println("userlist:"+userList);
 		if (userList.size()>0) {
 			System.out.println("3333");
+			session.setAttribute("user", userList.get(0));
 			return "jsp/loginSubmit";
 		}else {
-			return "jsp/loginSubmit";
+			String msg = "用户名或密码错误";
+			model.addAttribute("msg", msg);
+			return "login";
 		}
 		
 	}

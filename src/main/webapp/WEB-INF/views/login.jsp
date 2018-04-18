@@ -43,7 +43,7 @@
 			<p class="login-box-msg"></p>
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane active" id="home">
-					<form action="${APP_PATH}/main" method="POST">
+					<form action="${APP_PATH}/main" method="POST" id="loginSubmit">
 						<div class="form-group has-feedback">
 							<label>用户名</label> <input type="text"
 								class="form-control" placeholder="请输入用户名" name="username" style="width:100%">
@@ -129,8 +129,8 @@
 			$("#reg_form").submit();
 		});
 		$("#signup").click(function(){
-			$("#reg_form").attr("action","itProject/loginSubmit.action");
-			$("#reg_form").submit();
+			$("#loginSubmit").attr("action","itProject/loginSubmit.action");
+			$("#loginSubmit").submit();
 		});
 		
 	</script>
