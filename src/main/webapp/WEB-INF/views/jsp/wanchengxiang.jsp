@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -79,14 +80,17 @@
         			<th>项目状态</th>
         		</thead>
         		<tbody>
+        			<c:forEach items="${projects }" var="o" varStatus="status">
+        		
         			<tr>
-        				<td>1</td>
-        				<td>人员1</td>
-        				<td>青岛第一考点</td>
-        				<td>2018年4月3日至4月5日</td>
-        				<td>暂无</td>
-        				<td><a>修改</a></td>
+        				<td>${o.projectname }</td>
+        				<td>${o.projectPrincipal }</td>
+        				<td>${o.projectIntroduction }</td>
+        				<td><fmt:formatDate value="${o.starttime }" pattern="yyyy-MM-dd" /> </td>
+        				<td><fmt:formatDate value="${o.overtime }" pattern="yyyy-MM-dd" /></td>
+        				<td>完成</td>
         			</tr>
+        		</c:forEach>
         		</tbody>
         	</table>
         </div>

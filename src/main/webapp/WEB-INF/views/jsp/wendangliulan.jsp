@@ -77,12 +77,14 @@
         			
         		</thead>
         		<tbody>
+        		<c:forEach items="${documents }" var="o" varStatus="status">
         			<tr>
-        				<td>1</td>
-        				<td>人员1</td>
-        				<td>青岛第一考点</td>
+        				<td>${o.documentName }</td>
+        				<td>${o.documentContent }</td>
+        				<td>${o.documentEvaluation }</td>
         				
         			</tr>
+        			</c:forEach>
         		</tbody>
         	</table>
         </div>

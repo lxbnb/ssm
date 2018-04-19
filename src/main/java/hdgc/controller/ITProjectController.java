@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mysql.fabric.xmlrpc.base.Data;
 
+import hdgc.bean.Document;
 import hdgc.bean.Project;
 import hdgc.bean.User;
 import hdgc.service.DocumentService;
@@ -116,9 +117,10 @@ public class ITProjectController {
 	 * @return
 	 */
 	@RequestMapping("/wendangliulan")
-	public String wendangliulan(HttpSession session) {
+	public String wendangliulan(HttpSession session,Model model) {
 		User user = (User)session.getAttribute("user");
-		System.out.println("username:"+user.getRealname());
+		List<Document> documents = documentService.findByUserId(user.getId());
+		model.addAttribute("documents", documents);
 		return "jsp/wendangliulan";
 	}
 	/**
@@ -148,6 +150,6 @@ public class ITProjectController {
 	@RequestMapping("/qingchushuju")
 	public String qingchushuju() {
 		
-		return "jsp/qingchushuju";
+		return "jsp/xiaochushuju";
 	}
 }
