@@ -59,9 +59,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
      <h1>
-        欢迎进入IT管理系统      
-        <p>${user.username }</p>
-        <p>${useruser}</p>
+        文档浏览
         <small>列表</small>
       </h1>
     </section>
@@ -70,52 +68,24 @@
     <section class="content">
       <div class="row">
         <!-- left column -->
-        <!-- <div class="col-md-12">
+        <div class="col-md-12">
         	<table class="table table-hover">
         		<thead>
-        			<th>序号</th>
-        			<th>姓名</th>
-        			<th>考点</th>
-        			<th>考试时间</th>
-        			<th>成绩</th>
-        			<th>操作</th>
-        			<th>操作</th>
-        			<th>操作</th>
+        			<th>文档名称</th>
+        			<th>文档内容</th>
+        			<th>文档评价</th>
+        			
         		</thead>
         		<tbody>
         			<tr>
         				<td>1</td>
         				<td>人员1</td>
         				<td>青岛第一考点</td>
-        				<td>2018年4月3日至4月5日</td>
-        				<td>暂无</td>
-        				<td><a>修改</a></td>
-        				<td><a>取消报名</a></td>
-        				<td><a>打印准考证</a></td>
-        			</tr>
-        			<tr>
-        				<td>2</td>
-        				<td>人员2</td>
-        				<td>日照紫金花园</td>
-        				<td>2018年4月3日至4月5日</td>
-        				<td>暂无</td>
-        				<td><a>修改</a></td>
-        				<td><a>取消报名</a></td>
-        				<td><a>打印准考证</a></td>
-        			</tr>
-        			<tr>
-        				<td>3</td>
-        				<td>人员3</td>
-        				<td>西湖海上乐园</td>
-        				<td>2018年4月3日至4月5日</td>
-        				<td>89.0</td>
-        				<td><a>详细信息</a></td>
-        				<td><a>考试已结束</a></td>
-        				<td><a>打印结业证书</a></td>
+        				
         			</tr>
         		</tbody>
         	</table>
-        </div> -->
+        </div>
         
       </div>
       <!-- /.row -->
