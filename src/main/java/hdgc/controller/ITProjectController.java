@@ -1,5 +1,7 @@
 package hdgc.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -147,9 +149,24 @@ public class ITProjectController {
 		
 		return "jsp/daochu";
 	}
-	@RequestMapping("/qingchushuju")
+	@RequestMapping("/xiaochushuju")
 	public String qingchushuju() {
 		
 		return "jsp/xiaochushuju";
+	}
+	@RequestMapping("/daoruSubmit")
+	public String daoruSubmit(HttpSession session,String exambatchname,String exambatchbegintime,String exambatchendtime,String projectuser,String examcondition) throws ParseException {
+		User user = (User)session.getAttribute("user");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Project project = new Project();
+		project.setProjectname(exambatchname);
+		project.setStarttime(simpleDateFormat.parse(exambatchbegintime));
+		project.setOvertime(simpleDateFormat.parse(exambatchendtime));
+		project.setProjectPrincipal(projectuser);
+		project.setProjectIntroduction(examcondition);
+		project.setUserid(user.getId());
+		projectService.add(project);
+		
+		return "redirect:/itProject/jixingxiang.action";
 	}
 }

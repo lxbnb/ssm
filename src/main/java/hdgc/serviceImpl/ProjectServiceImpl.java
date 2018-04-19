@@ -22,5 +22,10 @@ public class ProjectServiceImpl implements ProjectService{
 		example.createCriteria().andUseridEqualTo(userId);
 		return projectDAO.selectByExample(example);
 	}
+	@Override
+	public int add(Project project) {
+		// TODO Auto-generated method stub
+		return projectDAO.insertSelective(project);
+	}
 
 }

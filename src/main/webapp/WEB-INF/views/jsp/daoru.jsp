@@ -66,32 +66,72 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <!-- left column -->
-        <div class="col-md-12">
-        	<table class="table table-hover">
-        		<thead>
-        			<th>项目名称</th>
-        			<th>项目负责人</th>
-        			<th>项目介绍</th>
-        			<th>项目开始时间</th>
-        			<th>项目结束时间</th>
-        			<th>项目状态</th>
-        		</thead>
-        		<tbody>
-        			<tr>
-        				<td>1</td>
-        				<td>人员1</td>
-        				<td>青岛第一考点</td>
-        				<td>2018年4月3日至4月5日</td>
-        				<td>暂无</td>
-        				<td><a>修改</a></td>
-        			</tr>
-        		</tbody>
-        	</table>
-        </div>
-        
-      </div>
+      <div id="content_panel" class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+			<h1>新建批次</h1>
+			</section>
+			<hr />
+			<section class="content">
+			<div class="col-md-12">
+				<div class="box">
+					<div class="box-header">
+					<!-- /.box-header -->
+
+					<div class="box-body table-responsive no-padding">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">----->></h3>
+							</div>
+							<div class="panel-body">
+								<div class="box box-primary" style="width:30%;margin:auto;">
+            <div class="box-header with-border" >
+              <h3 class="box-title">新建</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" action="${APP_PATH }/itProject/daoruSubmit.action" method="post">
+              <div class="box-body">
+              <div class="form-group">
+                  <label for="exambatchname">项目名称</label>
+                  <input type="text" class="form-control" id="exambatchname" name="exambatchname" placeholder="">
+                </div>
+                <div class="form-group">
+                  <label for="exambatchbegintime">开始时间</label>
+                  <input type="date" class="form-control" id="exambatchbegintime" name="exambatchbegintime" >
+                </div>
+                <div class="form-group">
+                  <label for="exambatchendtime">结束时间</label>
+                  <input type="date" class="form-control" id="exambatchendtime" name="exambatchendtime" >
+                </div>               
+                <div class="form-group">
+                  <label for="selectexamroom">项目负责人</label>
+                  <input type="text" class="form-control" id="exambatchendtime" name="projectuser" >
+                </div>
+                 <div class="form-group">
+                  <label for="examcondition">项目说明</label>
+                  <input type="text" class="form-control" id="examcondition" name="examcondition" >
+                </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary" style="margin-left:40%;">提交</button>
+              </div>
+            </form>
+          </div>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+					<!-- /.box-footer-->
+			</div>
+
+				<!-- /.box -->
+		</div>
+		<div class="modal_cover"></div>
+		</div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
