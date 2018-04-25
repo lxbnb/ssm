@@ -71,21 +71,21 @@
         <div class="col-md-12">
         	<table class="table table-hover">
         		<thead>
-        			<th>项目名称</th>
-        			<th>项目负责人</th>
-        			<th>项目介绍</th>
+        			<th>总项目数</th>
+        			<th>待完成项目数</th>
+        			<!-- <th>项目介绍</th>
         			<th>项目开始时间</th>
         			<th>项目结束时间</th>
-        			<th>项目状态</th>
+        			<th>项目状态</th> -->
         		</thead>
         		<tbody>
         			<tr>
-        				<td>1</td>
-        				<td>人员1</td>
-        				<td>青岛第一考点</td>
+        				<td>${num }</td>
+        				<td>${daiwancheng}</td>
+        				<!-- <td>青岛第一考点</td>
         				<td>2018年4月3日至4月5日</td>
         				<td>暂无</td>
-        				<td><a>修改</a></td>
+        				<td><a>修改</a></td> -->
         			</tr>
         		</tbody>
         	</table>

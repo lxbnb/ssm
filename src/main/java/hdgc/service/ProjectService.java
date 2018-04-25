@@ -7,4 +7,6 @@ import hdgc.bean.Project;
 public interface ProjectService {
 	List<Project> findByUserId(Long userId);
 	int add(Project project);
+	List<Project> findByAll();
+	int delect(int projectId);
 }

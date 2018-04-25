@@ -27,5 +27,16 @@ public class ProjectServiceImpl implements ProjectService{
 		// TODO Auto-generated method stub
 		return projectDAO.insertSelective(project);
 	}
+	@Override
+	public List<Project> findByAll() {
+		// TODO Auto-generated method stub
+		ProjectExample example = new ProjectExample();
+		return projectDAO.selectByExample(example);
+	}
+	@Override
+	public int delect(int projectId) {
+		// TODO Auto-generated method stub
+		return projectDAO.deleteByPrimaryKey(projectId);
+	}
 
 }

@@ -76,17 +76,19 @@
         			<th>项目介绍</th>
         			<th>项目开始时间</th>
         			<th>项目结束时间</th>
-        			<th>项目状态</th>
+        			<th>项目操作</th>
         		</thead>
         		<tbody>
+        			<c:forEach items="${projects }" var="o" varStatus="status">
         			<tr>
-        				<td>1</td>
-        				<td>人员1</td>
-        				<td>青岛第一考点</td>
-        				<td>2018年4月3日至4月5日</td>
-        				<td>暂无</td>
-        				<td><a>修改</a></td>
+        				<td>${o.projectname }</td>
+        				<td>${o.projectPrincipal }</td>
+        				<td>${o.projectIntroduction }</td>
+        				<td><fmt:formatDate value="${o.starttime }" pattern="yyyy-MM-dd" /> </td>
+        				<td><fmt:formatDate value="${o.overtime }" pattern="yyyy-MM-dd" /></td>
+        				<td><a href="${APP_PATH }/itProject/shanchu.action?projectId=${o.id }">删除</a></td>
         			</tr>
+        			</c:forEach>
         		</tbody>
         	</table>
         </div>
