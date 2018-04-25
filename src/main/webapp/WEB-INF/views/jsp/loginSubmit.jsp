@@ -61,8 +61,7 @@
      <h1>
         欢迎进入IT管理系统      
         <p>${user.username }</p>
-        <p>${useruser}</p>
-        <small>列表</small>
+       
       </h1>
     </section>
 

@@ -129,10 +129,23 @@ public class ITProjectController {
 	 * 统计分析管理
 	 * @return
 	 */
-	@RequestMapping("/xinagmu")
-	public String xinagmu() {
-		
-		return "jsp/xinagmu";
+	@RequestMapping("/xiangmu")
+	public String xinagmu(HttpSession session,Model model) {
+		User user = (User)session.getAttribute("user");
+		List<Project> projects = projectService.findByUserId(user.getId());
+		model.addAttribute("num",projects.size());
+		int i = 0;
+		if (projects.size() > 0) {
+			for(Project p : projects) {
+				Date date = new Date();
+				//相等为0，前者大于后者为1，反之为-1
+				if (date.compareTo(p.getStarttime()) == 1 && date.compareTo(p.getOvertime()) == -1 ) {
+					i++;
+				}
+			}
+		}
+		model.addAttribute("daiwancheng", i);
+		return "jsp/xiangmu";
 	}
 	
 	/**

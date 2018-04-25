@@ -3,6 +3,8 @@
 <%
 	pageContext.setAttribute("APP_PATH", request.getContextPath());
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -65,7 +67,8 @@
             <li><a href="${APP_PATH }/itProject/xiangmu.action"><i class="fa fa-circle-o"></i> 项目</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <c:if test="${user.usertypeId == 1 }">
+        	<li class="treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>后台管理</span>
             <span class="pull-right-container">
@@ -78,6 +81,8 @@
             <li><a href="${APP_PATH }/itProject/xiaochushuju.action"><i class="fa fa-circle-o"></i> 消除数据</a></li>
           </ul>
         </li>
+        </c:if>
+        
         <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
